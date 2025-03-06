@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  bitrix-webhook-service:
+    build: .
+    image: bitrix-webhook-service
+    container_name: bitrix-webhook-service
+    restart: always
+    ports:
+      - "8085:8085"
+    volumes:
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    environment:
+      - FLASK_ENV=production
